@@ -1,0 +1,11 @@
+/*-----------------
+COLOR
+-----------------*/
+:root{
+    --firstbackground-color: #009688;
+    --secondbackground-color: #dcdbd3;
+    --header-color: #eaeaea;
+    --notification-color: #8edafc;
+    --selectedchat-color: #e9ebeb;
+    --footer-color: #f3eeea;
+}
