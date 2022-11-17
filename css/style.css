@@ -12,7 +12,10 @@ RESET
 COMMON
 ----------------*/
 body{
+    width: 100vw;
+    height: 100vh;
     font-family: 'Lato', sans-serif;
+    background-image: linear-gradient(var(--firstbackground-color) 20%, var(--secondbackground-color) 20% 100%); 
 }
 
 /*----------------
