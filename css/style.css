@@ -18,10 +18,94 @@ body{
     background-image: linear-gradient(var(--firstbackground-color) 20%, var(--secondbackground-color) 20% 100%); 
 }
 
+i{
+    color: #b1b1b1;
+}
+
+/*----------------
+CONTAINER
+----------------*/
+.container{
+    width: 1280px;
+    height: 700px;
+    margin: auto;
+    background-color: red;
+}
+
 /*----------------
 HEADER
 ----------------*/
+header{
+    background-color: var(--header-color);
+}
 
+.header-row{
+    display: flex;
+}
+
+.row-utent{
+    padding: 10px;
+    width: 40%;
+    border-right: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.image-utent{
+    display: flex;
+    align-items: center;
+}
+
+img{
+    width: 70px;
+    border-radius: 100%;
+}
+
+.icons{
+    display: flex;
+}
+
+.icons > i{
+    margin: 0 10px;
+}
+
+.row-friendchat{
+    padding: 0 10px;
+    width: 60%;
+}
+
+.row-friendchat{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/*----------------
+ASIDE
+----------------*/
+aside{
+    background-color: blue;
+    width: 40%;
+    height: 500px;
+}
+
+.notification-bar{
+    display: flex;
+    align-items: center;
+    background-color: purple;
+    padding: 10px;
+}
+
+.bell{
+    padding: 20px;
+    border-radius: 100%;
+    background-color: var(--notificationbell-color);
+}
+
+.notification-text{
+    margin: 0 10px;
+}
 /*----------------
 MAIN
 ----------------*/
