@@ -93,7 +93,7 @@ aside{
 .notification-bar{
     display: flex;
     align-items: center;
-    background-color: purple;
+    background-color: var(--notification-color);
     padding: 10px;
 }
 
