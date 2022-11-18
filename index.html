@@ -18,12 +18,11 @@
     <title>Boolzapp</title>
 </head>
 <body>
-    <div class="container">
-    <!-- Header -->
-    <header>
-        <div class="header-row">
-            <!-- Profile -->
-            <div class="row-utent">
+    <div id="app" class="container">
+
+        <div class="col-left">
+             <!-- Profile -->
+             <div class="app-header">
                 <div class="image-utent">
                     <img src="img/avatar_2.jpg" alt="Utent image">
                     <span>Daniele</span>
@@ -34,42 +33,79 @@
                     <i class="fa-solid fa-ellipsis-vertical"></i>
                 </div>
             </div>
-            <!-- Profile chat -->
-            <div class="row-friendchat">
+
+            <!-- Notification -->
+            <div class="notification-bar">
+                <div class="bell">
+                    <i class="fa-solid fa-bell-slash"></i>
+                </div>
+                <div class="notification-text">
+                    <span>Ricevi notifiche di nuovi messaggi</span>
+                    <br>
+                    <a href="">Attiva notifiche desktop</a>
+                </div>
+            </div>
+
+            <!-- Search contact -->
+            <div class="search">
+                <i class="fa-solid fa-magnifying-glass"></i><input type="text" @key-up placeholder="Cerca o inizia una nuova chat">
+            </div>
+
+            <!-- Contacts List -->
+            <div class="contacts">
+                <div class="contact" v-for="(contact, index) in contacts" :class="{active: index === currentContact}">
+                    <div class="avatar">
+                       <img :src="`img/avatar${contact.avatar}.jpg`" alt="">
+                       <span>{{contact.name}}</span>
+                    </div>
+                    <div class="last-message">
+                        12.00
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+    
+
+        
+       
+        
+
+
+
+        
+
+
+        <!-- Member chat -->
+        <div class="col-right">
+            <div class="app-header">
                 <div class="image-utent">
                     <img src="img/avatar_1.jpg" alt="Utent image">
                     <span>Michele</span>
                 </div>
-
                 <div class="icons">
                     <i class="fa-solid fa-magnifying-glass"></i>
                     <i class="fa-solid fa-paperclip"></i>
                     <i class="fa-solid fa-ellipsis-vertical"></i>
                 </div>
             </div>
-        </div>
-    </header>
 
-    <!-- Aside -->
-    <aside>
-        <div class="notification-bar">
-            <div class="bell">
-                <i class="fa-solid fa-bell-slash"></i>
+
+            <!-- Chat -->
+            <div class="chat">
+                <div class="message-container" v-for="message in contacts[currentContact].messages" :class="message.status">
+                    <div class="message">
+                        Bellaaa
+                    </div>
+                </div>
+                </div>
             </div>
-            <div class="notification-text">
-                <span>Ricevi notifiche di nuovi messaggi</span>
-                <br>
-                <i>Attiva notifiche desktop</i>
-            </div>
+
+
+            <!-- Keyboard send message -->
+            <div class="keyboard-message"></div>
         </div>
-        
-    </aside>
-
-    <!-- Main -->
-    <main></main>
-
-    <!-- Footer -->
-    <footer></footer>
     </div>
     
     <!-- JS -->
