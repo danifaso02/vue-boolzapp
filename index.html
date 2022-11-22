@@ -41,7 +41,6 @@
 
 
                 <!--Notification-->
-                <!-- <section :class="notification==false ? 'hide':''"> -->
                     <div class="notification row" >
                         <div class="bell-icon row">
                             <div><i class="fa-regular fa-bell-slash"></i></div>
@@ -51,7 +50,6 @@
                             <a href="">Attiva notifiche desktop</a>
                         </div>
                     </div>
-                <!-- </section> -->
 
 
                 <!--Search bar-->
@@ -64,10 +62,6 @@
                 
                 <!--Chats of Contacts-->
                 <div class="chats">
-                    <!-- <div class="archive-bar"@click="ToggleArchive">
-                        <span><i class="fa-solid fa-box-archive"></i></span>
-                        <span>Archiviate</span>
-                    </div> -->
                     <div class="chat row" :class="activeChat===index ? 'active':''" v-for="(contact,index) in contacts" @click="changeActive(index)"v-show="contact.visible||searchChat==''">
                         <div class="person-image">
                             <img :src="`img/avatar${contact.avatar}.jpg`" alt="">
@@ -85,7 +79,7 @@
             <div class="right-app row">
 
                 <!--Friend Chat-->
-                <div class="right-header row">
+                <div class="contact-chat row">
                     <div class="avatar">
                         <img :src="`img/avatar${contacts[activeChat].avatar}.jpg`" alt=""> 
                     </div>
@@ -140,8 +134,9 @@
     </div>
     
     <!-- JS -->
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="js/main.js"></script>
+    <!-- AXIOS -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     
 </body>
 </html>
