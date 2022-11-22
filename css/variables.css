@@ -7,7 +7,9 @@ COLOR
     --header-color: #eaeaea;
     --notification-color: #8edafc;
     --notificationbell-color: #f2fbff;
+    --bell-color: #8edafc;
     --selectedchat-color: #e9ebeb;
-    --minemessage-color:#d5f9ba;
+    --sent-color: #d8fdd2;
+    --received-color: #fff;
     --keyboard-color: #f3eeea;
 }

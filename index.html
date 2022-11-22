@@ -4,111 +4,144 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Google fonts -->
+    <!-- Style Css -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
-    <!-- Css -->
-    <link rel="stylesheet" href="css/style.css">
-    <!-- Font awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- Vue Js -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <!-- Vue JS -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <!-- Title -->
     <title>Boolzapp</title>
 </head>
-<body>
-    <div id="app" class="container">
+<body class="row">
 
-        <div class="col-left">
-             <!-- Profile -->
-             <div class="app-header">
-                <div class="image-utent">
-                    <img src="img/avatar_2.jpg" alt="Utent image">
-                    <span>Daniele</span>
-                </div>
-                <div class="icons">
-                    <i class="fa-solid fa-circle-notch"></i>
-                    <i class="fa-solid fa-message"></i>
-                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                </div>
-            </div>
+    <div id="app">
 
-            <!-- Notification -->
-            <div class="notification-bar">
-                <div class="bell">
-                    <i class="fa-solid fa-bell-slash"></i>
-                </div>
-                <div class="notification-text">
-                    <span>Ricevi notifiche di nuovi messaggi</span>
-                    <br>
-                    <a href="">Attiva notifiche desktop</a>
-                </div>
-            </div>
+        <div class="app-container row">
 
-            <!-- Search contact -->
-            <div class="search">
-                <i class="fa-solid fa-magnifying-glass"></i><input type="text" @key-up placeholder="Cerca o inizia una nuova chat">
-            </div>
+            <!--Left Section-->
+            <div class="left-app row">
 
-            <!-- Contacts List -->
-            <div class="contacts">
-                <div class="contact" v-for="(contact, index) in contacts" :class="{active: index === currentContact}">
+                <!--My Profile-->
+                <div class="my-profile row">
                     <div class="avatar">
-                       <img :src="`img/avatar${contact.avatar}.jpg`" alt="">
-                       <span>{{contact.name}}</span>
+                        <img src="img/avatar_2.jpg" alt=""> 
                     </div>
-                    <div class="last-message">
-                        12.00
+                    <div class="my-name">Daniele</div>
+                    <div class="left-head-actions ">
+                        <span id="left-story"><i class="fa-solid fa-spinner"></i></span>
+                        <span id="new-message"><i class="fa-solid fa-message"></i></span>
+                        <span id="left-menu"><i class="fa-solid fa-ellipsis-vertical"></i></span>
+                    </div>
+                </div>
+
+
+                <!--Notification-->
+                <!-- <section :class="notification==false ? 'hide':''"> -->
+                    <div class="notification row" >
+                        <div class="bell-icon row">
+                            <div><i class="fa-regular fa-bell-slash"></i></div>
+                        </div>
+                        <div class="notification-text">
+                            <div>Ricevi notifiche di nuovi messaggi</div>
+                            <a href="">Attiva notifiche desktop</a>
+                        </div>
+                    </div>
+                <!-- </section> -->
+
+
+                <!--Search bar-->
+                <div class="search-bar">
+                    <form action="">
+                        <button id="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                        <input class="search-chat"type="text" placeholder="Cerca o inizia una nuova chat"  v-model="searchChat"@keyup="searchContact">
+                    </form>
+                </div>
+                
+                <!--Chats of Contacts-->
+                <div class="chats">
+                    <!-- <div class="archive-bar"@click="ToggleArchive">
+                        <span><i class="fa-solid fa-box-archive"></i></span>
+                        <span>Archiviate</span>
+                    </div> -->
+                    <div class="chat row" :class="activeChat===index ? 'active':''" v-for="(contact,index) in contacts" @click="changeActive(index)"v-show="contact.visible||searchChat==''">
+                        <div class="person-image">
+                            <img :src="`img/avatar${contact.avatar}.jpg`" alt="">
+                        </div>
+                        <div class="object-of-text">
+                            <div class="chat-name">{{contact.name}}</div>
+                            <small class="time">12:00</small>
+                        </div>
+                    </div>                    
+                </div>
+            </div>
+
+
+            <!--Right Section-->
+            <div class="right-app row">
+
+                <!--Friend Chat-->
+                <div class="right-header row">
+                    <div class="avatar">
+                        <img :src="`img/avatar${contacts[activeChat].avatar}.jpg`" alt=""> 
+                    </div>
+                    <div class="who">
+                        <div class="subject-name">{{contacts[activeChat].name}}</div>
+                        <div class="last-online">
+                            <small>
+                                Ultimo accesso oggi alle 12:00
+                            </small>
+                        </div>
+                    </div>
+                    <div class="right-head-icons">
+                        <span id="search-in-chat"><i class="fa-solid fa-magnifying-glass"></i></span>
+                        <span id="paperclip"><i class="fa-solid fa-paperclip"></i></span>
+                        <span id="right-menu"><i class="fa-solid fa-ellipsis-vertical"></i></span>
+                    </div>
+                </div>
+
+
+                <!--Chat-->
+                <section class="chat-section">
+                    <div class="chats-container">
+                        <div class="message-row row" v-for="(message,index) in contacts[activeChat].messages">
+                            <div class="content " :class="message.status">
+                                {{message.message}}
+                                <small class="time-sent">12:00</small>
+                                <div class="menu-message"  :class="message.option==true ? 'showOptions':'',message.status=='sent' ? 'menu-message-right':''" >
+                                    <div class="info">Message info</div>
+                                    <div class="delete-text" @click="deleteText(index)">Elimina messaggio</div>
+                                </div>
+                                <div class="chevron" @click="OpenContentMenu(index)"><i class="fa-solid fa-chevron-down"></i></div>
+                            </div>                            
+                        </div>
+                    </div>  
+                </section>
+
+
+                <!-- Chat Input -->
+                <div class="chat-input row">
+                    <div class="send-btn row" >
+                        <button id="emoji-btn"><i class="fa-regular fa-face-smile"></i></button>
+                    </div>
+                    <div id="send-text">
+                        <input type="text" placeholder="Scrivi un messaggio" @keyup.enter="addNewMessage" v-model="newText" required>
+                    </div>
+                    <div class="send-btn row">
+                        <button id="audio-text-btn"><i class="fa-solid fa-microphone"></i></button>
                     </div>
                 </div>
             </div>
-        </div>
-
-        
-    
-
-        
-       
-        
-
-
-
-        
-
-
-        <!-- Member chat -->
-        <div class="col-right">
-            <div class="app-header">
-                <div class="image-utent">
-                    <img src="img/avatar_1.jpg" alt="Utent image">
-                    <span>Michele</span>
-                </div>
-                <div class="icons">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                    <i class="fa-solid fa-paperclip"></i>
-                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                </div>
-            </div>
-
-
-            <!-- Chat -->
-            <div class="chat">
-                <div class="message-container" v-for="message in contacts[currentContact].messages" :class="message.status">
-                    <div class="message">
-                        Bellaaa
-                    </div>
-                </div>
-                </div>
-            </div>
-
-
-            <!-- Keyboard send message -->
-            <div class="keyboard-message"></div>
         </div>
     </div>
     
     <!-- JS -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="js/main.js"></script>
+    
 </body>
 </html>
