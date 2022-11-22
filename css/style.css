@@ -173,24 +173,7 @@ CHAT
     position: absolute;
     top: 10px;
     right: 15px;
-    opacity: 0.7;
     font-size: 0.7rem;
-}
-.close-notification{
-    position: absolute;
-    right: 15px;
-    color: #6b7376;
-}
-.hide{
-    display: none;
-}
-.chat-menu{
-    position: absolute;
-    right: 5px;
-    bottom: 20px;
-    align-items: center;
-
-
 }
 
 /*------------------
@@ -335,11 +318,13 @@ CHAT
 .content:hover .chevron{
     opacity: 1;
     transition: 300ms;
+    cursor: pointer;
 }
 
 .info ,.delete-text{
     font-size: 16px;
     padding: 15px;
+    cursor: pointer;
 }
 
 .showOptions{
